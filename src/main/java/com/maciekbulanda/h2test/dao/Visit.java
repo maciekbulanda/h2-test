@@ -1,5 +1,7 @@
 package com.maciekbulanda.h2test.dao;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,6 +19,7 @@ public class Visit {
     private LocalTime visitTime;
 
     @ManyToOne
+    @JsonBackReference
     private Patient patient;
 
     public Integer getId() {

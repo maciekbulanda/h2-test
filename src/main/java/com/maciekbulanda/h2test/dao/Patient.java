@@ -1,6 +1,7 @@
 package com.maciekbulanda.h2test.dao;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -16,7 +17,7 @@ public class Patient {
     private Integer id;
     private String name;
 
-    @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
     private Set<Visit> visit = new HashSet<>();
 
