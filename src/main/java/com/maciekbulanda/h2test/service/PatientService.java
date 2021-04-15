@@ -20,7 +20,7 @@ public class PatientService {
         return patientRepository.findById(id).orElse(null);
     }
 
-    public Patient findByName(String name) {
-        return patientRepository.findPatientByName(name).orElse(null);
+    public Iterable<Patient> findByName(String name) {
+        return patientRepository.findPatientByName(name);
     }
 }

@@ -1,12 +1,11 @@
 package com.maciekbulanda.h2test.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maciekbulanda.h2test.dao.Patient;
 import com.maciekbulanda.h2test.service.PatientService;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PatientController {
@@ -22,7 +21,7 @@ public class PatientController {
     }
 
     @GetMapping(value = "/api/patients")
-    Iterable<Patient> getPatientByName() {
-        return patientService.findAll();
+    Iterable<Patient> getPatientByName(@RequestBody Patient patient) {
+        return patientService.findByName(patient.getName());
     }
 }
